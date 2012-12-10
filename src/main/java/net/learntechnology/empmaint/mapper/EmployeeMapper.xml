@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+		PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="net.learntechnology.empmaint.mapper.EmployeeMapper">
+
+	<resultMap id="employeeResult" type="Employee">
+		 <result property="id" column="id"/>
+		 <result property="firstName" column="firstname"/>
+		 <result property="lastName" column="lastname"/>
+		 <result property="age" column="age"/>
+		 <result property="department.id" column="departmentid"/>
+		 <result property="department.name" column="department_name"/>
+	 </resultMap>
+
+	<select id="getAllEmployees" resultMap="employeeResult">
+		SELECT
+			emp.id,
+			emp.firstname,
+			emp.lastname,
+			emp.age,
+			emp.departmentid,
+			dep.name as department_name
+		FROM employee emp
+		JOIN department dep ON dep.id = emp.departmentid
+		ORDER BY firstname, lastname
+	</select>
+
+	<!-- NOTE in real life your employee single result would probably
+	contain more columns than the one used for your display list above.
+	for this demo the queries are basically the same though. I kept them
+	separate since in real life this one would be more complete -->
+	<select id="getEmployee" resultMap="employeeResult">
+		SELECT
+			emp.id,
+			emp.firstname,
+			emp.lastname,
+			emp.age,
+			emp.departmentid,
+			dep.name as department_name
+		FROM employee emp
+		JOIN department dep ON dep.id = emp.departmentid
+		WHERE emp.id = #{id}
+	</select>
+
+	<update id="updateEmployee" parameterType="Employee">
+        UPDATE employee
+        SET
+            firstname = #{firstName},
+            lastname = #{lastName},
+            age = #{age},
+            departmentid = #{department.id}
+        WHERE id = #{id}
+    </update>
+
+    <insert id="insertEmployee" parameterType="Employee" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO employee ( firstname, lastname, age, departmentid )
+        VALUES ( #{firstName}, #{lastName}, #{age}, #{department.id} )
+    </insert>
+
+	<!-- for oracle you're insert with a sequence your insert mapping would look like:
+	<insert id="insertEmployee" parameterType="Employee">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			select EMPLOYEE_SEQ.nextval from dual
+		</selectKey>
+		INSERT INTO employee ( id, firstname, lastname, age, departmentid )
+	 	VALUES ( #{id}, #{firstName}, #{lastName}, #{age}, #{department.id} )
+	</insert>
+    -->
+
+    <delete id="deleteEmployee" parameterType="java.lang.Integer">
+        DELETE FROM employee WHERE id = #{value}
+    </delete>
+
+
+</mapper>

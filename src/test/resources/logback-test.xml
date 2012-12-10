@@ -1,0 +1,36 @@
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>target/tests.log</file>
+		<append>false</append>
+		<encoder>
+			<pattern>%d{MM/dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="net.learntechnology" level="DEBUG">
+		<appender-ref ref="FILE"/>
+	</logger>
+	<!-- turn this on to see results back from mybatis -->
+	<logger name="net.learntechnology.empmaint.mapper" level="DEBUG">
+		<appender-ref ref="FILE"/>
+	</logger>
+	<logger name="org.apache.ibatis" level="DEBUG">
+		<appender-ref ref="FILE"/>
+	</logger>
+	<logger name="org.mybatis" level="DEBUG">
+		<appender-ref ref="FILE"/>
+	</logger>
+	<logger name="java.sql" level="DEBUG">
+		<appender-ref ref="FILE"/>
+	</logger>
+	<root level="ERROR">
+		<appender-ref ref="STDOUT"/>
+	</root>
+</configuration>

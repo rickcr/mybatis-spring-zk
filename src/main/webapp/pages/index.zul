@@ -1,0 +1,72 @@
+<?page title="Employee Maintenance" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+<window id="employeesPage" border="none" width="100%" height="100%" apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init(employeeVM)">
+	<panel width="99%" border="normal" >
+		<caption label="Employees (click to edit/view)" style="text-align: left;">
+			 <button label="Create New" onClick="@command('newEmployee')" style="font-size:12px;" />
+		</caption>
+		<panelchildren>
+			<vlayout style="margin:10px;">
+				<listbox id="employeesList" model="@load(vm.employees)"
+						 selectedItem="@bind(vm.selectedEmployee)"
+						 width="99%" height="200px" vflex="true" hflex="true" rows="20">
+ 					<listhead>
+						<listheader label="First" align="left"   width="130px"/>
+						<listheader label="Last" align="left"   width="130px"/>
+						<listheader label="Age" align="left" width="130px"/>
+						<listheader label="Department" align="left"  width="160px"/>
+					</listhead>
+					<template name="model" var="item">
+						<listitem onClick="@command('editEmployee')">
+							<listcell label="@load(item.firstName)"/>
+							<listcell label="@load(item.lastName)"/>
+							<listcell label="@load(item.age)"/>
+							<listcell label="@load(item.department.name)"/>
+						</listitem>
+					</template>
+				</listbox>
+			</vlayout>
+		</panelchildren>
+	</panel>
+	<panel width="99%" border="normal" title="Employee" visible="@load(vm.selectedEmployeeCopy ne null)">
+		<panelchildren>
+			<vlayout style="margin:10px;">
+				<groupbox validationMessages="@id('vmsgs')">
+					<vlayout id="employeeForm" style="margin:5px;">
+
+						<hlayout sclass="z-valign-middle">
+							<label value="First:"/>
+							<textbox value="@bind(vm.selectedEmployeeCopy.firstName) @save(vm.selectedEmployeeCopy.firstName, before='submit')"
+									 constraint="no empty" style="width:200px;margin-right:20px;"/>
+							<label value="Last:"/>
+							<textbox value="@bind(vm.selectedEmployeeCopy.lastName) @save(vm.selectedEmployeeCopy.lastName, before='submit')"
+									 constraint="no empty" style="width:200px;margin-right:20px;"/>
+							<label value="Age:"/>
+							<intbox value="@bind(vm.selectedEmployeeCopy.age) @save(vm.selectedEmployeeCopy.age, before='submit')"
+									 constraint="no empty,no negative" style="width:50px"/>
+						</hlayout>
+						<hlayout sclass="z-valign-middle">
+							<label value="Department:" />
+							<listbox model="@load(vm.departments)" selectedItem="@bind(vm.selectedEmployeeCopy.department)"
+								width="200px" mold="select" rows="1"
+								id="deptList" >
+								<template name="model" var="item">
+									<listitem>
+										<listcell label="@load(item.name)" />
+									</listitem>
+								</template>
+							</listbox>
+						</hlayout>
+						<hlayout style="margin-top:5px;">
+							<button label="Submit" onClick="@command('submit')" />
+							<button label="Delete" onClick="@command('delete')" style="margin-left:5px;" visible="@load(vm.selectedEmployee.id ne null)"/>
+						</hlayout>
+					</vlayout>
+				</groupbox>
+			</vlayout>
+		</panelchildren>
+	</panel>
+</window>
+</zk>

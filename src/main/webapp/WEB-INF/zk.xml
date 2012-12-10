@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk> 
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri>/timeout.zul</timeout-uri>
+		<embed><![CDATA[
+			<script type="text/javascript">
+				zk.afterLoad("zk", function () {
+					var oldProgressbox = zUtl.progressbox;
+					zUtl.progressbox = function () {
+						oldProgressbox.apply(this, arguments);
+						var $mask = jq('.z-loading');
+						if ($mask) {
+							var $img = jq('.z-loading-indicator'),
+								$body = jq(document.body),
+								body = $body[0],
+								bw = $body.width() + body.scrollLeft - 10,
+								bh = $body.height() + body.scrollTop - 10;
+
+							// update mask and image's style
+							$mask.width(bw);
+							$mask.height(bh);
+							$mask.css('opacity', .75);
+
+							$img.width('150px');
+							$img.css('margin-left', (bw - $img.width()) / 2 + 'px');
+							$img.css('margin-top', (bh - $img.height()) / 2 + 'px');
+
+							// update mask size when window scroll
+							if (!window.eventBinded) {
+								var $win = jq(window);
+								$win.scroll(function () {
+									var $maskInst = jq('.z-loading');
+									if ($maskInst[0]) {
+										$maskInst.width(bw + $win.scrollLeft());
+										$maskInst.height(bh + $win.scrollTop());
+									}
+								});
+								window.eventBinded = true;
+							}
+						}
+					}
+				});
+			</script>
+		]]></embed>
+	</device-config>
+</zk>
