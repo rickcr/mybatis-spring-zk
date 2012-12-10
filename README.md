@@ -64,7 +64,7 @@ Now you just make a Mapper interface and the mapper xml that holds the sql:
 
 EmployeMapper.xml
 
-<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+    <?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
 			PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
 			"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 	<mapper namespace="net.learntechnology.empmaint.mapper.EmployeeMapper">
@@ -93,22 +93,13 @@ EmployeMapper.xml
                 
          .....
  
-Note above we didn't have to use a result map since the columns returned match our Employee object. You could map straight to the object type if you like (assuming your columns are aliased correctly to match your object properties):
+Note you don't always have to use a ResultMap when your columns match up to your properties:
 
-No ResultMap needed:
+Example not using a ResultMap needed:
 
-		<select id="getAllEmployees" resultType="Employee">
-			SELECT
-				emp.id,
-				emp.firstname,
-				emp.lastname,
-				emp.age,
-				emp.departmentid,
-				dep.name as department_name
-			FROM employee emp
-			JOIN department dep ON dep.id = emp.departmentid
-			ORDER BY firstname, lastname
-		</select>
+	<select id="getAllDepartments" resultType="net.learntechnology.empmaint.domain.Department">
+		SELECT id, name FROM DEPARTMENT
+	</select>
 
 To use our mapper we just declare it as a resource. SIMPLE!:
 
