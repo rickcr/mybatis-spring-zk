@@ -2,9 +2,9 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ncs</groupId>
-	<artifactId>employee-maint-zk</artifactId>
+	<artifactId>mybatis-spring-zk</artifactId>
 	<packaging>war</packaging>
-	<name>employee-maint-zk</name>
+	<name>mybatis-spring-zk</name>
 	<version>1.0</version>
 	<repositories>
 		<repository>
