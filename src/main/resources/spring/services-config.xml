@@ -16,7 +16,7 @@
 	Example defining the datasource from our properties file/filter,
 	If for example running HSQL as separate process:
 
-	<bean id="empDS" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="externalDB" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${db.driver}"/>
 		<property name="url" value="${db.url}"/>
 		<property name="username" value="${db.username}"/>
