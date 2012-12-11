@@ -27,6 +27,8 @@ using your mappers directly in your ViewModel.
 
 There are sample filters included. By default the local is used when you do a build. For this sample application the filters don't do much since we're using a standalone internal db, but in real life you'd have different datasource properties for different environments. The filter will replace the appropriate wildcards in anything under web-inf (you could change this in your pom.) The filter currently replaces the wildcards in web-application.properties and the spring config files (in real life the datasource you see commented out in services-config.xml would be replaced based on your filter.) To build using a different profile, for example the qa version, you'd just switch to building with a different profile from maven: mvn clean install -P qa
 
+[ I still need to clean up the pom.xml some. I know I have some un-needed dependencies in there (I started this project as a port of a more complex project so not everything is completely cleaned up in this simplified application.) ]
+
 MyBatis
 -------
 Many people might be coming at this from experience with ORMs such as Hibernate. MyBatis isn't an ORM tool but a sql mapping tool. I prefer using MyBatis, but not going to get into all the reasons why in this readme. The basics with Spring here are really simple.
