@@ -1,0 +1,3 @@
+#!/bin/bash
+# This is a simple post deploy hook executed. This script gets executed directly, so 
+# it could be python, php, ruby, etc. 
