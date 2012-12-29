@@ -1,17 +1,20 @@
 package net.learntechnology.empmaint.services;
 
-import net.learntechnology.empmaint.mapper.DepartmentMapper;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import javax.annotation.Resource;
-import java.util.List;
+
+import net.learntechnology.empmaint.domain.Department;
+import net.learntechnology.empmaint.mapper.DepartmentMapper;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 	@Resource
 	private DepartmentMapper departmentMapper;
 
-	public List getAllDepartments() {
+	public List<Department> getAllDepartments() {
 		return departmentMapper.getAllDepartments();
 	}
 }
