@@ -3,6 +3,8 @@ mybatis-spring-zk
 
 Sample application demonstrating integration of MyBatis 3.1, Spring 3.1, and ZK 6.5.0 (MVVM)
 
+See it running on the RedHat OpenShift cloud at http://mybatisspringzk-simbo1905.rhcloud.com/
+
 **To build:**<br/>
 Requires maven<br/>
 From project directory: mvn clean install
@@ -16,7 +18,7 @@ Move the generated employee-maintenance.war file in target/ to your app server's
 Url: http://localhost:8080/employee-maintenance/
 
 **Deploy to openshift:**<br/>
-Install the tools etc then:
+Install the tools etc as per https://openshift.redhat.com/community/get-started then:
 
 	# create a diy app
 	rhc app create mybatisspringzk diy-0.1
@@ -40,6 +42,9 @@ Install the tools etc then:
 	
 	#tail the logs in a second window
 	rhc-tail-files -a mybatisspringzk 
+	
+	#check the details of the url of where the deployed app
+	rhc app show --app mybatisspringzk
 
 
 NOTES:
