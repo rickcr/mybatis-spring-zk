@@ -5,7 +5,7 @@ import net.learntechnology.empmaint.domain.Employee;
 import java.util.List;
 
 public interface EmployeeService {
-	List getAllEmployees();
+	List<Employee> getAllEmployees();
     void updateEmployee(Employee emp);
     void deleteEmployee(Integer id);
     public Employee getEmployee(Integer id);

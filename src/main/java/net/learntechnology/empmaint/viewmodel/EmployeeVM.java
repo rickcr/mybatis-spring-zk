@@ -1,9 +1,14 @@
 package net.learntechnology.empmaint.viewmodel;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import net.learntechnology.empmaint.domain.Department;
 import net.learntechnology.empmaint.domain.Employee;
 import net.learntechnology.empmaint.services.DepartmentService;
 import net.learntechnology.empmaint.services.EmployeeService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
@@ -11,10 +16,6 @@ import org.springframework.stereotype.Component;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
-
-import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.List;
 
 @Component("employeeVM")
 @Scope("prototype")

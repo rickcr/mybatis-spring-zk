@@ -13,7 +13,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Resource
 	private EmployeeMapper employeeMapper;
 
-	public List getAllEmployees() {
+	public List<Employee> getAllEmployees() {
 		return employeeMapper.getAllEmployees();
 	}
 

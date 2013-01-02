@@ -3,14 +3,49 @@ mybatis-spring-zk
 
 Sample application demonstrating integration of MyBatis 3.1, Spring 3.1, and ZK 6.5.0 (MVVM)
 
+See it running on the RedHat OpenShift cloud at http://mybatisspringzk-simbo1905.rhcloud.com/
+
 **To build:**<br/>
 Requires maven<br/>
 From project directory: mvn clean install
 
+**To run:**</br>
+From project directory: mvn jetty:run
+Url: http://localhost:8080
+
 **To deploy:**<br/>
 Move the generated employee-maintenance.war file in target/ to your app server's deploy dir (eg tomcat/webapps) and start your server.
+Url: http://localhost:8080/employee-maintenance/
 
-**URL:**  http://localhost:8080/employee-maintenance/
+**Deploy to openshift:**<br/>
+Install the tools etc as per https://openshift.redhat.com/community/get-started then:
+
+	# create a diy app
+	rhc app create mybatisspringzk diy-0.1
+	
+	#add the demo code repo to the folder
+	cd mybatisspringzk
+	git remote add upstream https://github.com/simbo1905/mybatis-spring-zk.git
+	
+	# in the next command just hit return if asked for a password for downloading the code
+	git pull -s recursive -X theirs upstream master
+	
+	# you can check that 'upstream' points to my demo code and 'origin' points to your server with 
+	git remote show upstream
+	git remote show origin
+	
+	# insure the code builds
+	mvn -Dmaven.test.skip=true package
+	
+	# push it up to 'origin' which should be your server which will build it and start the app
+	git push
+	
+	#tail the logs in a second window
+	rhc-tail-files -a mybatisspringzk 
+	
+	#check the details of the url of where the deployed app
+	rhc app show --app mybatisspringzk
+
 
 NOTES:
 ------
@@ -104,8 +139,6 @@ Example not using a ResultMap needed:
 	</select>
 
 To use our mapper we just declare it as a resource. SIMPLE!:
-
-
  
 	@Service
 	public class EmployeeServiceImpl implements EmployeeService {
