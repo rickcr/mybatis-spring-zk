@@ -2,12 +2,15 @@ package net.learntechnology.empmaint.services;
 
 import net.learntechnology.empmaint.domain.Employee;
 import net.learntechnology.empmaint.mapper.EmployeeMapper;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service
+@Service("employeeService")
+@Scope(proxyMode= ScopedProxyMode.TARGET_CLASS)
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Resource

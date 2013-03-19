@@ -1,24 +1,20 @@
 package net.learntechnology.empmaint.viewmodel;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
 import net.learntechnology.empmaint.domain.Department;
 import net.learntechnology.empmaint.domain.Employee;
 import net.learntechnology.empmaint.services.DepartmentService;
 import net.learntechnology.empmaint.services.EmployeeService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
 
-@Component("employeeVM")
-@Scope("prototype")
+import java.util.List;
+
+@VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class EmployeeVM {
 	private final static Logger logger = LoggerFactory.getLogger(EmployeeVM.class);
 
@@ -27,9 +23,9 @@ public class EmployeeVM {
 	Employee selectedEmployee;
 	Employee selectedEmployeeCopy;
 
-	@Resource
+	@WireVariable
 	private EmployeeService employeeService;
-	@Resource
+	@WireVariable
 	private DepartmentService departmentService;
 
 	@Init

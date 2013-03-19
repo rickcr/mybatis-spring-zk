@@ -55,6 +55,7 @@
 	<junit.version>4.7</junit.version>
 	<maven.build.timestamp.format>MM.dd.yyyy.HH:mm</maven.build.timestamp.format>
 	<zk.version>6.5.1</zk.version>
+	<zkspring.version>3.1.1</zkspring.version>
 	<jetty.version>7.6.4.v20120524</jetty.version>
 </properties>
 	
@@ -237,7 +238,11 @@
 		<artifactId>zkbind</artifactId>
 		<version>${zk.version}</version>
 	</dependency>
-
+	<dependency>
+		<groupId>org.zkoss.zk</groupId>
+		<artifactId>zkspring-core</artifactId>
+		<version>${zkspring.version}</version>
+	</dependency>
 </dependencies>
 	
 <build>
