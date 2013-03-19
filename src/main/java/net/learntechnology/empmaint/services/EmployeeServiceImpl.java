@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service("employeeService")
-@Scope(proxyMode= ScopedProxyMode.TARGET_CLASS)
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Resource
