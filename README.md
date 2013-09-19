@@ -13,11 +13,11 @@ From project directory: mvn clean install
 From project directory: mvn jetty:run
 Url: http://localhost:8080
 
-**To deploy:**<br/>
+**To deploy Option 1:**<br/>
 Move the generated employee-maintenance.war file in target/ to your app server's deploy dir (eg tomcat/webapps) and start your server.
 Url: http://localhost:8080/employee-maintenance/
 
-**Deploy to openshift:**<br/>
+**OR To Deploy Option 1. To openshift:**<br/>
 Install the tools etc as per https://openshift.redhat.com/community/get-started then:
 
 	# create a diy app
