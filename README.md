@@ -155,13 +155,12 @@ To use our mapper we just declare it as a resource. SIMPLE!:
 
 Example service being used in a ZK ViewModel:
 
-	@Component("employeeVM")
-	@Scope("prototype")
+ 
 	public class EmployeeVM {
 		 
 		List<Employee> employees;
 	
-		@Resource
+		@WireResource
 		private EmployeeService employeeService;
 	
 		@Init
