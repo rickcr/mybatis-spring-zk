@@ -10,7 +10,7 @@
 		<file>${catalina.base}/logs/emp-maint.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<fileNamePattern>ncsapp.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>${catalina.base}/logs/emp-maint.%d{yyyy-MM-dd}.log</fileNamePattern>
 			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
@@ -19,10 +19,13 @@
 		</encoder>
 	</appender>
 
-	<logger name="net.learntechnology" level="${LOG_LEVEL}">
+	<logger name="org.zkoss" level="ERROR">
 		<appender-ref ref="FILE"/>
 	</logger>
-	<logger name="org.ibatis" level="${MYBATIS_LOG_LEVEL}">
+	<logger name="net.learntechnology" level="${LOG_LEVEL}" additivity="false">
+		<appender-ref ref="FILE"/>
+	</logger>
+	<logger name="net.learntechnology.empmaint.mapper" level="${MYBATIS_LOG_LEVEL}" additivity="false">
 		<appender-ref ref="FILE"/>
 	</logger>
 	<root level="ERROR">
