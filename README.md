@@ -4,7 +4,7 @@ mybatis-spring-zk
 Sample application demonstrating integration of MyBatis, Spring, and ZK  
 
 ** NOTE ! **
-I highly recommend you use the http://www.github.com/rickcr/mybatis-spring-zk-multimodule
+I highly recommend you use the https://github.com/rickcr/mybatis-spring-zk-multimodule
 project instead of this one. It's more realistic in how you would typically set up a true
 project. This one is fine for a standalone self-contained application (for example you 
 do not require a persistence jar to be shared with other projects.)
