@@ -6,5 +6,5 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring/test-application-config.xml"})
-abstract public class BaseIntegrationTest {
+abstract public class BaseIT {
 }

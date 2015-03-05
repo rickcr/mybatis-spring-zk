@@ -1,23 +1,30 @@
 mybatis-spring-zk
 =================
 
-Sample application demonstrating integration of MyBatis 3.1, Spring 3.1, and ZK 6.5.0 (MVVM)
+Sample application demonstrating integration of MyBatis, Spring, and ZK  
+
+** NOTE ! **
+I highly recommend you use the http://www.github.com/rickcr/mybatis-spring-zk-multimodule
+project instead of this one. It's more realistic in how you would typically set up a true
+project. This one is fine for a standalone self-contained application (for example you 
+do not require a persistence jar to be shared with other projects.)
 
 See it running on the RedHat OpenShift cloud at http://mybatisspringzk-simbo1905.rhcloud.com/
 
 **To build:**<br/>
 Requires maven<br/>
-From project directory: mvn clean install
+mvn clean install
 
 **To run:**</br>
-From project directory: mvn jetty:run
-Url: http://localhost:8080
-
+(Build first above) then
+Type: mvn jetty:run
+Use URL: http://localhost:8080
+ 
 **To deploy Option 1:**<br/>
-Move the generated employee-maintenance.war file in target/ to your app server's deploy dir (eg tomcat/webapps) and start your server.
-Url: http://localhost:8080/employee-maintenance/
+Move the generated mybatis-spring-zk.war file in target/ to your app server's deploy dir (eg tomcat/webapps) and start your server.
+Url: http://localhost:8080/mybatis-spring-zk/
 
-**OR To Deploy Option 1. To openshift:**<br/>
+**OR To Deploy Option 2. To openshift:**<br/>
 Install the tools etc as per https://openshift.redhat.com/community/get-started then:
 
 	# create a diy app

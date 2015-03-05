@@ -7,10 +7,10 @@
 	</appender>
 
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${catalina.base}/logs/emp-maint.log</file>
+		<file>${catalina.base}/logs/mybatis-spring-zk.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<fileNamePattern>${catalina.base}/logs/emp-maint.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>${catalina.base}/logs/mybatis-spring-zk.%d{yyyy-MM-dd}.log</fileNamePattern>
 			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
@@ -32,4 +32,3 @@
 		<appender-ref ref="STDOUT"/>
 	</root>
 </configuration>
-

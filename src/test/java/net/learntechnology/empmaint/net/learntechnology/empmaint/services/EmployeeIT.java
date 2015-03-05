@@ -1,6 +1,6 @@
 package net.learntechnology.empmaint.net.learntechnology.empmaint.services;
 
-import net.learntechnology.empmaint.BaseIntegrationTest;
+import net.learntechnology.empmaint.BaseIT;
 import net.learntechnology.empmaint.domain.Department;
 import net.learntechnology.empmaint.domain.Employee;
 import net.learntechnology.empmaint.services.EmployeeService;
@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-public class EmployeeIntegrationTest extends BaseIntegrationTest {
-	private final static Logger logger = LoggerFactory.getLogger(EmployeeIntegrationTest.class);
+public class EmployeeIT extends BaseIT {
+	private final static Logger logger = LoggerFactory.getLogger(EmployeeIT.class);
 
 	@Resource
 	private EmployeeService employeeService;

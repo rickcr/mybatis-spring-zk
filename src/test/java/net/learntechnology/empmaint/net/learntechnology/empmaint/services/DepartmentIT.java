@@ -1,6 +1,6 @@
 package net.learntechnology.empmaint.net.learntechnology.empmaint.services;
 
-import net.learntechnology.empmaint.BaseIntegrationTest;
+import net.learntechnology.empmaint.BaseIT;
 import net.learntechnology.empmaint.domain.Department;
 import net.learntechnology.empmaint.services.DepartmentService;
 import org.junit.Assert;
@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Resource;
 import java.util.List;
 
-public class DepartmentIntegrationTest extends BaseIntegrationTest {
-	private final static Logger logger = LoggerFactory.getLogger(DepartmentIntegrationTest.class);
+public class DepartmentIT extends BaseIT {
+	private final static Logger logger = LoggerFactory.getLogger(DepartmentIT.class);
 
 	@Resource
 	private DepartmentService departmentService;
